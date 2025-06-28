@@ -12,25 +12,61 @@
     />
   </head>
   <style>
+    /* Estilos generales */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 10px;
       align-items: stretch;
+      padding: 15px;
+      background: #f9f9f9; /* Fondo claro para las secciones */
+      border-radius: 8px;
     }
 
+    /* Estilo para las secciones Kichwa y Shuar */
     .gallery-section {
-      margin-bottom: 30px; /* Espacio entre secciones Kichwa y Shuar */
+      margin-bottom: 40px; /* Más espacio entre secciones */
+      padding: 20px;
+      background: linear-gradient(180deg, #fff, #f5f5f5); /* Degradado sutil */
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
+    .gallery-section:hover {
+      transform: translateY(-3px); /* Elevación ligera al pasar el mouse */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Estilo para los encabezados h2 */
     .gallery-section h2 {
       font-family: "Lora", serif;
-      font-size: 1.5rem;
-      color: #2e1f0f;
-      margin: 10px 0;
+      font-size: 2rem; /* Más grande para destacar */
+      color: #2e1f0f; /* Color marrón oscuro, cultural */
+      margin: 0 0 20px 0;
       text-align: center;
+      position: relative;
+      padding-bottom: 10px;
+      text-transform: uppercase; /* Para un toque formal */
+      letter-spacing: 1px;
     }
 
+    /* Separador decorativo debajo de h2 */
+    .gallery-section h2::after {
+      content: "";
+      display: block;
+      width: 100px;
+      height: 3px;
+      background: linear-gradient(
+        to right,
+        #e19b36,
+        #ce1126
+      ); /* Colores culturales */
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* Estilo para las tarjetas */
     .gallery-item {
       display: flex;
       flex-direction: column;
@@ -39,7 +75,7 @@
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      min-height: 550px; /* Ajustado para contener texto completo sin barras */
+      min-height: 550px; /* Asegura alineación de h3 */
       max-height: none;
     }
 
@@ -94,7 +130,7 @@
       text-align: justify;
       line-height: 1.2;
       margin-bottom: 2px;
-      flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+      flex-grow: 1;
     }
 
     .gallery-item p:last-of-type {
@@ -113,22 +149,33 @@
       margin: 2px auto 6px;
       border-radius: 5px;
       display: block;
-      margin-top: auto; /* Empuja el audio al final */
+      margin-top: auto;
     }
 
+    /* Media queries para responsividad */
     @media (min-width: 769px) and (max-width: 1024px) {
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
+        padding: 10px;
+      }
+
+      .gallery-section {
+        margin-bottom: 30px;
+        padding: 15px;
       }
 
       .gallery-section h2 {
-        font-size: 1.3rem;
-        margin: 8px 0;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
+      }
+
+      .gallery-section h2::after {
+        width: 80px;
       }
 
       .gallery-item {
-        min-height: 500px; /* Ajustado para pantallas medianas */
+        min-height: 500px;
         max-height: none;
         padding: 6px;
       }
@@ -170,15 +217,25 @@
       .gallery-grid {
         grid-template-columns: 1fr;
         gap: 6px;
+        padding: 8px;
+      }
+
+      .gallery-section {
+        margin-bottom: 20px;
+        padding: 10px;
       }
 
       .gallery-section h2 {
-        font-size: 1.2rem;
-        margin: 6px 0;
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .gallery-section h2::after {
+        width: 60px;
       }
 
       .gallery-item {
-        min-height: 450px; /* Ajustado para móviles */
+        min-height: 450px;
         max-height: none;
         padding: 6px;
       }
@@ -197,7 +254,7 @@
         margin-bottom: 1px;
       }
 
-      .gallery-item p:last-ofpersonal-of-type {
+      .gallery-item p:last-of-type {
         margin-bottom: 1px;
       }
 
