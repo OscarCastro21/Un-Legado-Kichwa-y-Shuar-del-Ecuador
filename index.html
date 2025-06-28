@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Un Legado Kichwa y Shuar del Ecuador</title>
-    <link rel="icon" href="imagenes/Ecuador.png" type="image/png">
+    <link rel="icon" href="imagenes/Ecuador.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Roboto:wght@400;700&family=Open+Sans&display=swap"
@@ -29,7 +29,7 @@
         <section class="content-section">
           <img src="imagenes/Kichwa.jpg" alt="Cultura Kichwa" />
           <div class="text-content">
-            <h2><span>🌄</span> Kichwa</h2>
+            <h2>🌄 <span>Kichwa</span></h2>
             <p>
               Los Kichwa constituyen una nacionalidad indígena predominantemente
               asentada en la Sierra ecuatoriana. Esta nacionalidad ha
@@ -42,7 +42,7 @@
         <section class="content-section">
           <img src="imagenes/shuar mujer vestimenta.jpg" alt="Cultura Shuar" />
           <div class="text-content">
-            <h2><span>🌿</span> Shuar</h2>
+            <h2>🌿 <span>Shuar</span></h2>
             <p>
               Los Shuar son una de las nacionalidades indígenas del Ecuador,
               asentados en una extensa área de la Amazonía ecuatoriana. Sus
@@ -68,19 +68,38 @@
         toggle.className = "menu-toggle";
         toggle.innerHTML = "☰";
         toggle.setAttribute("aria-label", "Toggle menu");
+        toggle.setAttribute("aria-expanded", "false");
         document.body.prepend(toggle);
 
         toggle.addEventListener("click", () => {
-          sidebar.classList.toggle("active");
+          const isExpanded = sidebar.classList.toggle("active");
+          toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+          console.log("Toggle clicked, active:", isExpanded);
         });
 
+        // Cerrar menú al hacer clic en un enlace
         const menuLinks = document.querySelectorAll(".sidebar ul li a");
         menuLinks.forEach((link) => {
           link.addEventListener("click", () => {
             if (window.innerWidth <= 768) {
+              console.log("Link clicked, removing active");
               sidebar.classList.remove("active");
+              toggle.setAttribute("aria-expanded", "false");
             }
           });
+        });
+
+        // Cerrar menú al hacer clic fuera
+        document.addEventListener("click", (event) => {
+          if (
+            window.innerWidth <= 768 &&
+            !sidebar.contains(event.target) &&
+            !toggle.contains(event.target)
+          ) {
+            console.log("Click outside, closing menu");
+            sidebar.classList.remove("active");
+            toggle.setAttribute("aria-expanded", "false");
+          }
         });
       });
     </script>
