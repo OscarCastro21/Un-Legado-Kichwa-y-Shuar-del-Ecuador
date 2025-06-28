@@ -1,13 +1,13 @@
-/* Reset and Base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body {
+body,
+html {
   font-family: "Open Sans", sans-serif;
-  background: #f4f1ec;
+  background: #f5e9d8;
   color: #2c2c2c;
   line-height: 1.6;
   overflow-x: hidden;
@@ -20,30 +20,76 @@ body {
 
 /* Sidebar */
 .sidebar {
-  width: 250px;
+  width: 260px;
   background: #2e1f0f;
   color: #fff;
-  padding: 20px;
+  padding: 25px;
   position: fixed;
   height: 100%;
-  transition: transform 0.3s ease; /* Transición suave */
-  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
-  background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
-  background-size: 150px;
+  transition: transform 0.4s ease-in-out;
+  box-shadow: 3px 0 12px rgba(0, 0, 0, 0.3);
+  background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+  background-size: 200px;
   z-index: 1000;
-  transform: translateX(0); /* Estado inicial visible en escritorio */
+  transform: translateX(0);
 }
 
 .sidebar h2 {
   font-family: "Lora", serif;
-  font-size: 1.4em;
-  font-weight: 600;
-  margin-bottom: 30px;
+  font-size: 1.8em;
+  font-weight: 700;
+  margin-bottom: 35px;
   text-align: center;
-  color: #fddcaa;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-  border-bottom: 2px solid #ffcf40;
-  padding-bottom: 10px;
+  background: linear-gradient(90deg, #ffcf40, #ce1126);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+  padding-bottom: 12px;
+  position: relative;
+  animation: subtleGlow 3s ease-in-out infinite alternate;
+}
+
+.sidebar h2::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #ffcf40, #ce1126, #1a3c34);
+  background-size: 200% 100%;
+  margin: 12px auto 0;
+  border-radius: 3px;
+  animation: expandLine 1.5s ease-out forwards,
+    gradientFlow 6s ease-in-out infinite;
+}
+
+@keyframes subtleGlow {
+  0% {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  }
+  100% {
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes expandLine {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 120px;
+  }
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .sidebar ul {
@@ -52,66 +98,91 @@ body {
 }
 
 .sidebar ul li {
-  margin: 20px 0;
+  margin: 25px 0;
   text-align: center;
 }
 
 .sidebar ul li a {
   color: #fdf6ec;
   text-decoration: none;
-  font-size: 1.15em;
+  font-size: 1.2em;
   font-weight: 600;
   font-family: "Open Sans", sans-serif;
   display: block;
-  padding: 12px 20px;
+  padding: 14px 20px;
   border-left: 5px solid transparent;
-  transition: all 0.3s ease;
-  border-radius: 8px;
-  background-color: rgba(255, 255, 255, 0.08);
+  border-image: url("https://www.transparenttextures.com/patterns/diagonal-striped-brick.png")
+    30 stretch;
+  transition: all 0.4s ease;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .sidebar ul li a:hover,
 .sidebar ul li a:focus,
 .sidebar ul li a.active {
-  background: rgba(255, 207, 64, 0.95);
-  border-left: 5px solid #fff;
+  background: linear-gradient(90deg, #e19b36, #ffcf40);
+  border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30
+    stretch;
   color: #2e1f0f;
-  transform: translateX(6px);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  transform: translateX(8px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.4);
 }
 
 /* Main Content */
 main {
-  margin-left: 250px;
-  padding: 20px;
-  width: calc(100% - 250px);
-  background: #fff8f0;
+  margin-left: 260px;
+  padding: 30px;
+  width: calc(100% - 260px);
+  background: linear-gradient(180deg, #fff8f0, #f5e9d8);
+  animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Header */
 header {
-  background: linear-gradient(135deg, #ffcd00, #003087, #ce1126);
-  color: #fff;
+  background: linear-gradient(135deg, #fdf6ec, #ffcd00, #e19b36);
+  color: #2e1f0f;
   padding: 100px 20px;
   text-align: center;
-  border-bottom: 4px solid #fff;
+  border-bottom: 4px solid transparent;
+  border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30
+    stretch;
   position: relative;
   overflow: hidden;
-  background-image: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxyYW5kb218MHx8fHx8fHx8MTY4NzA4MjA0Mg&ixlib=rb-4.0.3&q=80&w=1080"),
-    linear-gradient(135deg, #ffcd00, #003087, #ce1126);
+  background-image: url("https://www.transparenttextures.com/patterns/asanoha.png");
+  background-size: 150px;
   background-blend-mode: overlay;
-  background-size: cover, cover;
   background-position: center;
+  animation: subtleMove 20s linear infinite;
 }
 
 header h1 {
-  font-family: "Roboto", sans-serif;
-  font-size: 3em;
+  font-family: "Lora", serif;
+  font-size: 3.5em;
   margin: 0;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(90deg, #ffcf40, #e19b36);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
   position: relative;
   z-index: 1;
+  display: inline-block;
+  animation: fadeIn 1.5s ease-in forwards;
+  line-height: 1.2;
+  max-width: 90%;
+  margin: 0 auto;
 }
 
 header::before {
@@ -123,10 +194,10 @@ header::before {
   height: 200%;
   background: radial-gradient(
     circle,
-    rgba(255, 255, 255, 0.2) 0%,
+    rgba(255, 207, 64, 0.2) 0%,
     transparent 70%
   );
-  animation: pulse 8s infinite;
+  animation: pulse 12s infinite ease-in-out;
 }
 
 @keyframes pulse {
@@ -134,7 +205,7 @@ header::before {
     transform: scale(1);
   }
   50% {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
   100% {
     transform: scale(1);
@@ -143,19 +214,24 @@ header::before {
 
 /* Breadcrumbs */
 .breadcrumbs {
-  margin: 10px 0;
-  font-size: 0.9em;
+  margin: 15px 0;
+  font-size: 1em;
   color: #fff;
   text-align: center;
+  background: rgba(46, 31, 15, 0.8);
+  padding: 10px;
+  border-radius: 8px;
 }
 
 .breadcrumbs a {
   color: #ffcf40;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .breadcrumbs a:hover,
 .breadcrumbs a:focus {
+  color: #e19b36;
   text-decoration: underline;
 }
 
@@ -165,25 +241,42 @@ header::before {
 
 /* Sections */
 section {
-  background-color: #fff;
-  padding: 25px;
-  margin: 20px auto;
+  background: linear-gradient(180deg, #fdf6ec, #f5e9d8);
+  padding: 30px;
+  margin: 30px auto;
   border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
-  gap: 25px;
-  border: 1px solid #ddd;
-  max-width: 900px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  gap: 30px;
+  border: 4px solid transparent;
+  border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30
+    stretch;
+  max-width: 1000px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
   background-image: url("https://www.transparenttextures.com/patterns/asanoha.png");
-  background-size: 100px;
-  animation: subtleMove 20s linear infinite;
+  background-size: 120px;
+  animation: subtleMove 15s linear infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/asanoha.png");
+  background-size: 120px;
+  opacity: 0.1;
+  animation: subtleMove 15s linear infinite;
 }
 
 section:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes subtleMove {
@@ -191,36 +284,42 @@ section:hover {
     background-position: 0 0;
   }
   100% {
-    background-position: 100px 100px;
+    background-position: 120px 120px;
   }
 }
 
 section img {
-  width: 35%;
+  width: auto;
+  max-width: 35%;
   height: auto;
-  border: 3px solid #e19b36;
-  border-radius: 10px;
-  transition: transform 0.3s ease;
+  border: 4px solid transparent;
+  border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30
+    stretch;
+  border-radius: 12px;
+  transition: transform 0.4s ease, border-image-source 0.4s ease;
   margin: 0 auto;
-  display: block;
+  display: inline-block;
+  object-fit: contain;
 }
 
 section img:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  border-image-source: url("https://www.transparenttextures.com/patterns/diagonal-striped-brick.png");
 }
 
 section img::after {
   content: attr(alt);
   position: absolute;
-  bottom: 10px;
-  left: 10px;
-  background: rgba(0, 0, 0, 0.7);
+  bottom: 15px;
+  left: 15px;
+  background: rgba(46, 31, 15, 0.8);
   color: #fff;
-  padding: 5px;
+  padding: 8px;
   opacity: 0;
-  transition: opacity 0.3s ease;
-  font-size: 0.9em;
-  border-radius: 5px;
+  transition: opacity 0.4s ease;
+  font-size: 0.95em;
+  border-radius: 6px;
+  font-family: "Lora", serif;
 }
 
 section img:hover::after {
@@ -232,81 +331,358 @@ section .text-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  animation: fadeIn 1s ease-in;
 }
 
 section h2 {
-  color: #2e1f0f;
-  margin-bottom: 15px;
-  font-size: 1.8em;
-  border-bottom: 2px solid #ffcf40;
-  padding-bottom: 6px;
+  font-family: "Lora", serif;
+  font-size: 2em;
   font-weight: 700;
-  margin-top: 0;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+section h2 span {
+  background: linear-gradient(90deg, #ffcf40, #e19b36);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: inline-block;
+  animation: subtleGlow 3s ease-in-out infinite alternate;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #ffcf40, #ce1126, #1a3c34);
+  background-size: 200% 100%;
+  margin: 12px auto 0;
+  border-radius: 3px;
+  animation: expandLine 1.5s ease-out forwards,
+    gradientFlow 6s ease-in-out infinite;
 }
 
 section p {
   color: #333;
-  font-size: 1.05em;
-  margin-top: 10px;
+  font-size: 1.1em;
+  margin-top: 12px;
+  line-height: 1.7;
 }
 
 /* Context Section */
 .context {
   background: #fdf6ec;
-  padding: 15px;
-  border-left: 4px solid #e19b36;
-  margin-bottom: 20px;
+  padding: 20px;
+  border-left: 5px solid transparent;
+  border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30
+    stretch;
+  margin-bottom: 25px;
   font-style: italic;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .context h3 {
-  font-size: 1.2em;
+  font-family: "Lora", serif;
+  font-size: 1.3em;
   color: #2e1f0f;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.context h3::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ffcf40, #ce1126, #1a3c34);
+  background-size: 200% 100%;
+  margin: 8px 0;
+  border-radius: 3px;
+  animation: expandLine 1.5s ease-out forwards,
+    gradientFlow 6s ease-in-out infinite;
 }
 
 /* Collapsible Dialogues */
 details {
-  margin: 10px 0;
+  margin: 15px 0;
   cursor: pointer;
+  border-radius: 8px;
+  background: rgba(255, 207, 64, 0.05);
+  transition: background 0.3s ease;
 }
 
 summary {
   font-weight: bold;
   color: #e19b36;
-  padding: 10px;
-  background: rgba(255, 207, 64, 0.1);
-  border-radius: 5px;
+  padding: 12px;
+  background: rgba(255, 207, 64, 0.15);
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  font-family: "Lora", serif;
 }
 
 details[open] summary {
-  background: rgba(255, 207, 64, 0.3);
+  background: rgba(255, 207, 64, 0.35);
 }
 
 /* Audio Controls */
 audio {
-  margin-top: 15px;
+  margin-top: 20px;
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
+  border-radius: 8px;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
+}
+
+/* Gallery Section */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  align-items: stretch;
+  padding: 20px;
+  background: linear-gradient(180deg, #fdf6ec, #f5e9d8);
+  border-radius: 10px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+}
+
+.gallery-section {
+  margin-bottom: 50px;
+  padding: 25px;
+  background: linear-gradient(180deg, #fff, #f5e9d8);
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border: 4px solid transparent;
+  border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30
+    stretch;
+  animation: fadeIn 1s ease-in;
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/asanoha.png");
+  background-size: 120px;
+  opacity: 0.1;
+  animation: subtleMove 15s linear infinite;
+}
+
+.gallery-section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-section h2 {
+  font-family: "Lora", serif;
+  font-size: 2em;
+  margin: 0 0 25px 0;
+  text-align: center;
+  padding-bottom: 12px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.gallery-section h2 span {
+  background: linear-gradient(90deg, #ffcf40, #e19b36);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: inline-block;
+  animation: subtleGlow 3s ease-in-out infinite alternate;
+}
+
+.gallery-section h2::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #ffcf40, #ce1126, #1a3c34);
+  background-size: 200% 100%;
+  margin: 12px auto 0;
+  border-radius: 3px;
+  animation: expandLine 1.5s ease-out forwards,
+    gradientFlow 6s ease-in-out infinite;
+}
+
+.gallery-item {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  padding: 10px;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  min-height: 500px;
+  max-height: none;
+  animation: fadeIn 1s ease-in;
+}
+
+.gallery-item:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.gallery-item img {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  height: 160px;
+  object-fit: contain;
+  object-position: center;
+  border: 4px solid transparent;
+  border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30
+    stretch;
+  border-radius: 10px;
+  margin: 0 auto 15px;
+  transition: border-image-source 0.4s ease, transform 0.4s ease;
+}
+
+.gallery-item:hover img {
+  border-image-source: url("https://www.transparenttextures.com/patterns/diagonal-striped-brick.png");
+  transform: scale(1.05);
+}
+
+.gallery-item h3 {
+  font-family: "Lora", serif;
+  font-size: 1.2rem;
+  color: #2e1f0f;
+  margin: 5px 0;
+  font-weight: 700;
+  text-align: left;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.gallery-item h3::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #ffcf40, #ce1126, #1a3c34);
+  background-size: 200% 100%;
+  margin: 8px 0;
+  border-radius: 3px;
+  animation: expandLine 1.5s ease-out forwards,
+    gradientFlow 6s ease-in-out infinite;
+}
+
+.gallery-item p {
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.9rem;
+  color: #444;
+  text-align: justify;
+  line-height: 1.4;
+  margin-bottom: 5px;
+  flex-grow: 1;
+}
+
+.gallery-item p:last-of-type {
+  margin-bottom: 5px;
+}
+
+.gallery-item hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 5px 0;
+}
+
+.gallery-item audio {
+  width: 100%;
+  max-width: 220px;
+  margin: 5px auto 8px;
+  border-radius: 6px;
+  display: block;
+  margin-top: auto;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.2));
 }
 
 /* Glossary Section */
 .glossary {
-  background: #fff;
-  padding: 25px;
-  margin: 20px auto;
+  background: linear-gradient(180deg, #fdf6ec, #f5e9d8);
+  padding: 30px;
+  margin: 30px auto;
   border-radius: 15px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.05);
-  max-width: 900px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  max-width: 1000px;
+  border: 4px solid transparent;
+  border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30
+    stretch;
+  animation: fadeIn 1s ease-in;
+  position: relative;
+  overflow: hidden;
+}
+
+.glossary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("https://www.transparenttextures.com/patterns/asanoha.png");
+  background-size: 120px;
+  opacity: 0.1;
+  animation: subtleMove 15s linear infinite;
 }
 
 .glossary h2 {
   font-family: "Lora", serif;
-  color: #2e1f0f;
-  font-size: 1.8em;
-  margin-bottom: 15px;
-  border-bottom: 2px solid #ffcf40;
-  padding-bottom: 10px;
+  font-size: 2em;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.glossary h2 span {
+  background: linear-gradient(90deg, #ffcf40, #e19b36);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  position: relative;
+  display: inline-block;
+  animation: subtleGlow 3s ease-in-out infinite alternate;
+}
+
+.glossary h2::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 6px;
+  background: linear-gradient(90deg, #ffcf40, #ce1126, #1a3c34);
+  background-size: 200% 100%;
+  margin: 12px auto 0;
+  border-radius: 3px;
+  animation: expandLine 1.5s ease-out forwards,
+    gradientFlow 6s ease-in-out infinite;
 }
 
 .glossary ul {
@@ -315,29 +691,33 @@ audio {
 }
 
 .glossary ul li {
-  margin: 10px 0;
-  font-size: 1.05em;
+  margin: 12px 0;
+  font-size: 1.1em;
 }
 
 .glossary ul li strong {
   color: #2e1f0f;
+  font-weight: 700;
 }
 
 .download-btn {
   display: inline-block;
-  margin-top: 15px;
-  padding: 10px 20px;
-  background: #e19b36;
-  color: #fff;
+  margin-top: 20px;
+  padding: 12px 25px;
+  background: linear-gradient(90deg, #e19b36, #ffcf40);
+  color: #2e1f0f;
   text-decoration: none;
-  border-radius: 5px;
-  transition: background 0.3s ease;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Lora", serif;
+  font-weight: 600;
 }
 
 .download-btn:hover,
 .download-btn:focus {
-  background: #ffcf40;
-  color: #2e1f0f;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(90deg, #ffcf40, #e19b36);
 }
 
 /* Footer */
@@ -345,45 +725,52 @@ footer {
   background-color: #2e1f0f;
   color: #fff;
   text-align: center;
-  padding: 20px;
-  margin-left: 250px;
-  width: calc(100% - 250px);
-  border-top: 2px solid #ffcf40;
+  padding: 25px;
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  border-top: 4px solid transparent;
+  border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30
+    stretch;
+  background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+  background-size: 200px;
 }
 
 footer p {
-  font-size: 1em;
+  font-size: 1.1em;
   font-style: italic;
+  font-family: "Lora", serif;
 }
 
 .footer-link {
   color: #ffcf40;
   text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footer-link:hover,
 .footer-link:focus {
+  color: #e19b36;
   text-decoration: underline;
 }
 
 .menu-toggle {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   cursor: pointer;
-  top: 20px;
-  left: 20px;
-  padding: 10px 15px;
-  border-radius: 8px;
+  padding: 12px 18px;
+  border-radius: 10px;
   color: #2e1f0f;
   background: linear-gradient(135deg, #e19b36, #ffcf40);
   position: fixed;
-  top: 10px;
-  left: 10px;
+  top: 15px;
+  left: 15px;
   z-index: 1000;
+  transition: transform 0.3s ease;
 }
 
 .menu-toggle:hover,
 .menu-toggle:focus {
   transform: scale(1.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
 }
 
 /* Responsive */
@@ -392,17 +779,21 @@ footer p {
     width: 100%;
     height: 100%;
     position: fixed;
-    transform: translateX(-100%); /* Oculto por defecto */
+    transform: translateX(-100%);
     top: 0;
     left: 0;
   }
   .sidebar.active {
-    transform: translateX(0); /* Visible cuando está activo */
+    transform: translateX(0);
   }
   .sidebar h2 {
-    font-size: 1.2em;
-    padding: 8px 12px;
-    letter-spacing: 0.8px;
+    font-size: 1.4em;
+    padding: 10px 15px;
+    letter-spacing: 0.9px;
+  }
+  .sidebar h2::after {
+    animation: expandLine 1.5s ease-out forwards,
+      gradientFlow 6s ease-in-out infinite;
   }
   main,
   footer {
@@ -412,29 +803,142 @@ footer p {
   .menu-toggle {
     display: block;
   }
+  header {
+    padding: 80px 15px;
+    background-image: linear-gradient(135deg, #fdf6ec, #ffcf40, #e19b36);
+  }
+  header h1 {
+    font-size: 2.5em;
+    max-width: 95%;
+  }
+  header::before {
+    display: none;
+  }
   section {
     flex-direction: column;
     max-width: 100%;
     padding: 20px;
-    margin: 20px 10px;
+    margin: 20px 15px;
   }
   section img {
-    width: 100%;
+    width: auto;
+    max-width: 100%;
     height: auto;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
   section .text-content {
     min-height: auto;
     justify-content: flex-start;
   }
-  header {
-    padding: 60px 10px;
-    background-image: linear-gradient(135deg, #ffcf40, #003087, #ce1126);
+  section h2 {
+    font-size: 1.6em;
+    gap: 6px;
   }
-  header h1 {
-    font-size: 2em;
+  section h2::after {
+    animation: expandLine 1.5s ease-out forwards,
+      gradientFlow 6s ease-in-out infinite;
   }
-  header::before {
-    display: none;
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding: 10px;
+  }
+  .gallery-section {
+    margin-bottom: 30px;
+    padding: 15px;
+  }
+  .gallery-section h2 {
+    font-size: 1.6em;
+    margin-bottom: 12px;
+    gap: 6px;
+  }
+  .gallery-section h2::after {
+    animation: expandLine 1.5s ease-out forwards,
+      gradientFlow 6s ease-in-out infinite;
+  }
+  .gallery-item {
+    min-height: auto;
+    max-height: none;
+    padding: 8px;
+  }
+  .gallery-item img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 8px;
+  }
+  .gallery-item h3 {
+    margin: 3px 0;
+  }
+  .gallery-item h3::after {
+    animation: expandLine 1.5s ease-out forwards,
+      gradientFlow 6s ease-in-out infinite;
+  }
+  .gallery-item p {
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+  .gallery-item p:last-of-type {
+    margin-bottom: 3px;
+  }
+  .gallery-item hr {
+    margin: 3px 0;
+  }
+  .gallery-item audio {
+    margin: 3px auto 6px;
+    margin-top: auto;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    padding: 15px;
+  }
+  .gallery-section {
+    margin-bottom: 40px;
+    padding: 20px;
+  }
+  .gallery-section h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    gap: 6px;
+  }
+  .gallery-section h2::after {
+    animation: expandLine 1.5s ease-out forwards,
+      gradientFlow 6s ease-in-out infinite;
+  }
+  .gallery-item {
+    min-height: 480px;
+    max-height: none;
+    padding: 8px;
+  }
+  .gallery-item img {
+    width: auto;
+    max-width: 100%;
+    height: 120px;
+    margin: 0 auto 10px;
+  }
+  .gallery-item h3 {
+    margin: 3px 0;
+  }
+  .gallery-item h3::after {
+    animation: expandLine 1.5s ease-out forwards,
+      gradientFlow 6s ease-in-out infinite;
+  }
+  .gallery-item p {
+    line-height: 1.3;
+    margin-bottom: 3px;
+  }
+  .gallery-item p:last-of-type {
+    margin-bottom: 3px;
+  }
+  .gallery-item hr {
+    margin: 3px 0;
+  }
+  .gallery-item audio {
+    margin: 3px auto 6px;
+    margin-top: auto;
   }
 }
