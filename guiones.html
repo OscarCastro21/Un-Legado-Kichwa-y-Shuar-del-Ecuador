@@ -198,6 +198,45 @@
           height: 190px;
         }
       }
+
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
+
+      .card {
+        background-color: #fffdf9;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+      }
+
+      .text-section {
+        margin-bottom: 15px;
+      }
+
+      .text-section h3 {
+        font-size: 1.1em;
+        margin-bottom: 5px;
+        color: #333;
+        text-align: center;
+      }
+
+      .text-section p {
+        text-align: justify;
+        line-height: 1.6;
+      }
+
+      audio {
+        width: 100%;
+        margin-top: 10px;
+      }
     </style>
   </head>
 
@@ -621,6 +660,10 @@
               tsantsa uwírmammi, iwianmi. European chichá nantar pujutnumu,
               shuar aents aintstárum nuwámi.
             </p>
+            <audio controls>
+              <source src="audios/audio17.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -641,6 +684,10 @@
               arútin, shuar nunkame chicham ijíjtin. Arútin yá, chunta nanká
               tura, nijíjtin, nijam chicha itíjtin, aujmá nunki iwíjtin.
             </p>
+            <audio controls>
+              <source src="audios/audio18.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -661,6 +708,10 @@
               (flecha) nunka itíjtin, Tantar suritji, chichá nantar uwírmammi
               tsentsak wá.
             </p>
+            <audio controls>
+              <source src="audios/audio19.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -680,6 +731,10 @@
               suritji etserká chicham, nuwámi chichá yáá ajútin, pujusna aintsme
               nintinmatin.
             </p>
+            <audio controls>
+              <source src="audios/audio20.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
         </div>
       </main>
