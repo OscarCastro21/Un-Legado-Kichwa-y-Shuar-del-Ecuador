@@ -7,91 +7,186 @@
     <link rel="icon" href="imagenes/Ecuador.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Open+Sans:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Roboto:wght@400;700&family=Open+Sans&display=swap"
       rel="stylesheet"
     />
     <style>
+      main {
+        margin-left: 250px;
+        padding: 20px;
+        width: calc(100% - 250px);
+        background: #fff8f0;
+      }
+
       .gallery-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
+        gap: 30px;
         align-items: stretch;
       }
 
       .gallery-item {
         display: flex;
         flex-direction: column;
-        background: #fff;
+        justify-content: flex-start;
+        background: white;
         padding: 15px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        min-height: 680px;
-        max-height: 680px;
+        min-height: 520px;
       }
 
       .gallery-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
       }
 
       .gallery-item img {
         width: 100%;
-        height: 150px;
+        height: 200px;
         object-fit: cover;
         object-position: center;
-        border-radius: 8px;
-        margin-bottom: 12px;
-        border: 2px solid #e19b36;
+        border: 3px solid #e19b36;
+        border-radius: 12px;
+        margin-bottom: 20px;
         transition: border-color 0.3s ease;
+      }
+
+      .gallery-item h3 {
+        font-family: "Lora", serif;
+        font-size: 1.4rem;
+        color: #2e1f0f;
+        margin: 10px 0;
+        font-weight: 600;
+      }
+
+      .gallery-item p {
+        font-family: "Open Sans", sans-serif;
+        font-size: 1rem;
+        color: #444;
+        text-align: justify;
+        margin-bottom: 15px;
+        line-height: 1.5;
+        flex-grow: 1;
+      }
+
+      .gallery-item hr {
+        border: none;
+        border-top: 1px solid #ccc;
+        margin: 20px 0;
+      }
+
+      .gallery-item h3 + p + h3 {
+        margin-top: 20px;
+      }
+
+      @media (max-width: 768px) {
+        body,
+        html {
+          overflow-x: hidden;
+          max-width: 100vw;
+        }
+
+        main {
+          margin-left: 0;
+          width: 100%;
+          padding: 10px 10px 20px 10px;
+          background: #fff8f0;
+        }
+
+        .gallery-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+          padding: 0 10px;
+        }
+
+        .gallery-item {
+          min-height: auto;
+        }
+
+        .sidebar {
+          width: 100%;
+          height: 100%;
+          position: fixed;
+          transform: translateX(-100%);
+          top: 0;
+          left: 0;
+          z-index: 1000;
+        }
+
+        .sidebar.active {
+          transform: translateX(0);
+        }
+
+        .sidebar h2 {
+          font-size: 1.2em;
+          padding: 8px 12px;
+          letter-spacing: 0.8px;
+        }
+
+        main,
+        footer {
+          margin-left: 0;
+          width: 100%;
+        }
+
+        .menu-toggle {
+          display: block;
+          position: fixed;
+          top: 10px;
+          left: 10px;
+          z-index: 1100;
+        }
+
+        .sidebar.active + main {
+          pointer-events: none;
+          opacity: 0.3;
+        }
+
+        section {
+          flex-direction: column;
+          max-width: 100%;
+          padding: 20px;
+          margin: 20px 10px;
+        }
+
+        section img {
+          width: 100%;
+          height: auto;
+          margin-bottom: 20px;
+        }
+
+        section .text-content {
+          min-height: auto;
+          justify-content: flex-start;
+        }
+
+        header {
+          padding: 60px 10px;
+          background-image: linear-gradient(135deg, #ffcf40, #003087, #ce1126);
+        }
+
+        header h1 {
+          font-size: 2em;
+        }
+
+        header::before {
+          display: none;
+        }
       }
 
       .gallery-item:hover img {
         border-color: #ce1126;
       }
 
-      .gallery-item h3 {
-        font-family: "Lora", serif;
-        font-size: 1.15rem;
-        color: #2e1f0f;
-        margin: 6px 0;
-        font-weight: 600;
-        text-align: left;
-      }
-
-      .gallery-item p {
-        font-family: "Open Sans", sans-serif;
-        font-size: 0.85rem;
-        color: #444;
-        text-align: justify;
-        line-height: 1.4;
-        margin-bottom: 6px;
-        flex: 1;
-      }
-
-      .gallery-item hr {
-        border: none;
-        border-top: 1px solid #ddd;
-        margin: 6px 0;
-      }
-
       .gallery-item audio {
-        width: 100%;
-        max-width: 200px;
-        margin: 6px auto;
-        border-radius: 5px;
         display: block;
-      }
-
-      .menu-toggle {
-        font-size: 1.5rem;
-        cursor: pointer;
-        padding: 10px;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 1000;
-        border-radius: 5px;
+        margin: 15px auto;
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
       }
 
       @media (min-width: 769px) and (max-width: 1024px) {
@@ -99,40 +194,48 @@
           grid-template-columns: repeat(2, 1fr);
         }
 
-        .gallery-item {
-          min-height: 650px;
-          max-height: 650px;
-        }
-
         .gallery-item img {
-          height: 140px;
+          height: 190px;
         }
       }
 
-      @media (max-width: 768px) {
-        body,
-        html {
-          overflow-x: hidden;
-        }
+      .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        padding: 20px;
+      }
 
-        main {
-          margin-left: 0;
-          width: 100%;
-          padding: 20px;
-        }
+      .card {
+        background-color: #fffdf9;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%;
+      }
 
-        .gallery-grid {
-          grid-template-columns: 1fr;
-        }
+      .text-section {
+        margin-bottom: 15px;
+      }
 
-        .gallery-item {
-          min-height: auto;
-          max-height: none;
-        }
+      .text-section h3 {
+        font-size: 1.1em;
+        margin-bottom: 5px;
+        color: #333;
+        text-align: center;
+      }
 
-        .gallery-item img {
-          height: 160px;
-        }
+      .text-section p {
+        text-align: justify;
+        line-height: 1.6;
+      }
+
+      audio {
+        width: 100%;
+        margin-top: 10px;
       }
     </style>
   </head>
@@ -156,7 +259,7 @@
 
         <div class="gallery-grid">
           <div class="gallery-item">
-            <img src="imagenes/mujeres_kichwa.jpg" alt="Mujeres Kichwa" />
+            <img src="imagenes/mujeres_kichwa.jpg" alt="Mujeres kichwa" />
             <h3>Español:</h3>
             <p>
               La cultura Otavalo pertenece a la nacionalidad Kichwa, ubicados al
@@ -165,11 +268,6 @@
               blusa, el sombrero, la fachalina, los collares, aretes y
               alpargatas son características de su identidad cultural.
             </p>
-            <audio controls>
-              <source src="audios/audio1_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Otavalo llaktakuna Kichwa nacionmanmi kan. Ecuador mama
@@ -196,11 +294,6 @@
               la cultura Otavalo que se utiliza también como parte del vestuario
               o como decoraciones.
             </p>
-            <audio controls>
-              <source src="audios/audio2_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Otavalo llaqtapi chay ñawpa riksishka rituallukuna kashkan, cedazo
@@ -227,11 +320,6 @@
               sombreros, realizan una danza ritual que generalmente se la baila
               en círculo para demostrar su trabajo en comunidad.
             </p>
-            <audio controls>
-              <source src="audios/audio3_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               San Juanito ñawpa takikuna Otavalo runakunapak kawsaymanta, chay
@@ -259,11 +347,6 @@
               círculo con arcos de flores en el cual se plasma la unión de su
               comunidad.
             </p>
-            <audio controls>
-              <source src="audios/audio4_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Shuk hatun raymi shinallatak Otavalo runakunap tradishunkunamanta
@@ -289,11 +372,6 @@
               Juanito sus movimientos son simétricos y sincrónicos que llevan a
               contemplar la riqueza de los kichwas.
             </p>
-            <audio controls>
-              <source src="audios/audio5_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Pawkar Raymi kikin hatun raymikuna shukmi, runakuna ñawpakuna
@@ -321,11 +399,6 @@
               que se celebra en junio en honor al inicio del solsticio de
               verano.
             </p>
-            <audio controls>
-              <source src="audios/audio6_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Cayambi Kichwa llaktamanta kawsaymi, warmikuna lliklla tullpuk
@@ -352,11 +425,6 @@
               comunidad y cultura y ritmo de coplas cantan y bailan en honor al
               inicio del verano.
             </p>
-            <audio controls>
-              <source src="audios/audio7_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               San Pedro raymikuna Cayambipi riksichin warmikuna sumak tullpuk
@@ -383,11 +451,6 @@
               unos bordados con finos detalles que complementan su riqueza
               cultural.
             </p>
-            <audio controls>
-              <source src="audios/audio8_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Cayambi kawsaymi warmikunapak lluksimanta tullpuk punchukunata
@@ -415,11 +478,6 @@
               es una fusión de los rituales de creencias cristianas con las
               ancestrales.
             </p>
-            <audio controls>
-              <source src="audios/audio9_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Cayambi llaktaman chaymanta chaypi ñukanchik Kichwa llakta Zuleta
@@ -430,14 +488,10 @@
               yuyaykuna shinallatak ñawpa runakunap rituallakunamanta
               tinkunakunamanta shuk kawsay rikuchin.
             </p>
-            <audio controls>
-              <source src="audios/audio9.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
           </div>
 
           <div class="gallery-item">
-            <img src="imagenes/ayahuma.JPG" alt="Aya Huma" />
+            <img src="imagenes/ayahuma.JPG" alt="Aya Humano" />
             <h3>Español:</h3>
             <p>
               El Aya Huma es uno de los personajes principales en las
@@ -447,11 +501,6 @@
               espirituales donde se plasma la dualidad y la sabiduría de los
               pueblos andinos.
             </p>
-            <audio controls>
-              <source src="audios/audio10_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Aya Huma shukmi hatun rikuspak runami ñawpa raymikunapi,
@@ -461,10 +510,6 @@
               kawsayta, yachayta rikuchin. Kaymi shuk espiritwalmi ruraykuna
               tukuy andinokuna kawsaymanta.
             </p>
-            <audio controls>
-              <source src="audios/audio10.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
           </div>
 
           <div class="gallery-item">
@@ -477,11 +522,6 @@
               máscara doble cara y de diversos colores, que se presenta como la
               conexión entre el cosmos y la tierra.
             </p>
-            <audio controls>
-              <source src="audios/audio11_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Diablo Huma ñawpakpi warmiwan takarishka rikurimun, chay
@@ -491,10 +531,6 @@
               kay runa kawsayta allpamamawan, hanan pachawan tinkuykunata
               rikuchin.
             </p>
-            <audio controls>
-              <source src="audios/audio11.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
           </div>
 
           <div class="gallery-item">
@@ -509,11 +545,6 @@
               aspectos es el personaje que jamás va a faltar en las fiestas
               andinas.
             </p>
-            <audio controls>
-              <source src="audios/audio12_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Diablo Huma shukmi hatun runa Inti Raymi raymipi, chaymi tukuy
@@ -523,10 +554,6 @@
               yachay, kawsaypa. Kay ima rikurimunmi shuk runa mana rikushka
               kanrayku andin raymikunapi mana shina rikuchina.
             </p>
-            <audio controls>
-              <source src="audios/audio12.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
           </div>
 
           <div class="gallery-item">
@@ -539,24 +566,16 @@
               tradiciones entre la cerámica, los bordados y sus costumbres y
               tradiciones.
             </p>
-            <audio controls>
-              <source src="audios/audio13_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
-              Kichwa yachaymanta hukninmi, Cañari yachaymi, Cañar markapi, Azuay
-              markapiwan kachkan. Cañari ninmi kawsayta ch'uwakuwan, ukukunawan,
-              kuykunawan, allpa llamkaywan. Chaywanmi sumaqta rikurin.
+              Otra cultura Kichwa es la cultura del Cañari ubicados en Azuay y
+              Cañar, Cañari tiene como significado que son descendientes de la
+              serpiente y la guacamaya, con un gran legado de costumbres y
+              tradiciones entre la cerámica, los bordados y sus costumbres y
+              tradiciones.
             </p>
-            <audio controls>
-              <source src="audios/audio13.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
           </div>
 
-          <!-- Ítem 14 -->
           <div class="gallery-item">
             <img src="imagenes/fiestascañari.jfif" alt="Fiestas Cañari" />
             <h3>Español:</h3>
@@ -568,11 +587,6 @@
               fajas de colores, sus sombreros de paño y de color blanco, sus
               fachalinas y collares para danzas en sus principales fiestas.
             </p>
-            <audio controls>
-              <source src="audios/audio14_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Cañari kawsaypi ñawpak raymikunapi Killa Raymi (Killa Raymi) Lalay
@@ -581,10 +595,6 @@
               llikllakunawan, makiwata yurak, yurak llikllawan churan,
               fachalina, kallarikuna tusukunchik kay raymikunapi.
             </p>
-            <audio controls>
-              <source src="audios/audio14.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
           </div>
 
           <div class="gallery-item">
@@ -599,11 +609,6 @@
               mujer, fiesta característica donde danzas con sus vestimentas
               coloridas y demuestran su unión comunitaria.
             </p>
-            <audio controls>
-              <source src="audios/audio15_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Cañarikuna rurankuna shinallatak “Tullpak Tusuy” raymipi, chaypi
@@ -613,10 +618,6 @@
               warmi karikuna tinkunakunata. Kay raymi shinallatakmi tusukunchik
               lliklla tullpukkunawan, llaktakunapak juntakunata rikuchinankapak.
             </p>
-            <audio controls>
-              <source src="audios/audio15.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
           </div>
 
           <div class="gallery-item">
@@ -631,11 +632,6 @@
               mujer, fiesta característica donde danzas con sus vestimentas
               coloridas y demuestran su unión comunitaria.
             </p>
-            <audio controls>
-              <source src="audios/audio16_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Kichwa:</h3>
             <p>
               Cañarikuna rurankuna shinallatak “Tullpak Tusuy” raymipi, chaypi
@@ -645,10 +641,6 @@
               warmi karikuna tinkunakunata. Kay raymi shinallatakmi tusukunchik
               lliklla tullpukkunawan, llaktakunapak juntakunata rikuchinankapak
             </p>
-            <audio controls>
-              <source src="audios/audio16.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
           </div>
 
           <div class="gallery-item">
@@ -661,11 +653,6 @@
               cabezas, han tenido un gran desarrollo histórico a la resistencia
               a la dominación de los europeos.
             </p>
-            <audio controls>
-              <source src="audios/audio17_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Shuar Chicham:</h3>
             <p>
               Shuar nunka Ecuador nunka amazonía wakichar wá. Shuar chicham
@@ -690,11 +677,6 @@
               preparación de la “Chonta” donde se canta, se elabora la chicha y
               se hacen plegarias.
             </p>
-            <audio controls>
-              <source src="audios/audio18_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Shuar Chicham:</h3>
             <p>
               Shuar nunka wá chicham umiki, “Chunta” suritji íwian aentsme.
@@ -718,11 +700,6 @@
               Chonta, otras como las flechas elaboradas con madera, el Tantar
               que es un escudo de protección.
             </p>
-            <audio controls>
-              <source src="audios/audio19_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Shuar Chicham:</h3>
             <p>
               Shuar aents jemej aitkáram nunkáme wá, tsentsak ni yáankam
@@ -747,11 +724,6 @@
               cultura rica en conocimiento ancestral que es importante seguirlo
               cultivan para que no se pierda.
             </p>
-            <audio controls>
-              <source src="audios/audio20_es.mp3" type="audio/mpeg" />
-              Tu navegador no soporta el elemento de audio.
-            </audio>
-            <hr />
             <h3>Shuar Chicham:</h3>
             <p>
               Shuar aents nunkáme tsunki nunká asamká ankanmámi. Yámpet,
