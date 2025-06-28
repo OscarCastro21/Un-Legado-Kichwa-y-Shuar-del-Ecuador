@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Guiones - Un Legado</title>
-    <link rel="icon" href="imagenes/Ecuador.png" type="image/png">
+    <link rel="icon" href="imagenes/Ecuador.png" type="image/png" />
     <link rel="stylesheet" href="styles.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Roboto:wght@400;700&family=Open+Sans&display=swap"
@@ -17,14 +17,14 @@
         width: calc(100% - 250px);
         background: #fff8f0;
       }
-    
+
       .gallery-grid {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         gap: 30px;
         align-items: stretch;
       }
-    
+
       .gallery-item {
         display: flex;
         flex-direction: column;
@@ -35,74 +35,77 @@
         box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
-        min-height: 520px; /* altura uniforme */
+        min-height: 520px;
       }
-    
+
       .gallery-item:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+        transform: translateY(-10px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
       }
-    
+
       .gallery-item img {
         width: 100%;
-        height: 180px;
+        height: 200px;
         object-fit: cover;
+        object-position: center;
         border: 3px solid #e19b36;
         border-radius: 12px;
-        margin-bottom: 15px;
+        margin-bottom: 20px;
+        transition: border-color 0.3s ease;
       }
-    
+
       .gallery-item h3 {
         font-family: "Lora", serif;
         font-size: 1.4rem;
         color: #2e1f0f;
-        margin-bottom: 10px;
-        text-align: center;
+        margin: 10px 0;
+        font-weight: 600;
       }
-    
+
       .gallery-item p {
         font-family: "Open Sans", sans-serif;
         font-size: 1rem;
         color: #444;
         text-align: justify;
         margin-bottom: 15px;
-        line-height: 1.4; /* reduce espacio entre líneas */
+        line-height: 1.5;
+        flex-grow: 1;
       }
-    
+
       .gallery-item hr {
         border: none;
         border-top: 1px solid #ccc;
-        margin: 20px 0; /* espacio entre Español y Kichwa */
+        margin: 20px 0;
       }
-    
+
       .gallery-item h3 + p + h3 {
         margin-top: 20px;
       }
-    
-      /* Responsive para pantallas pequeñas */
+
       @media (max-width: 768px) {
-        body, html {
-          overflow-x: hidden; /* evita scroll horizontal */
+        body,
+        html {
+          overflow-x: hidden;
           max-width: 100vw;
         }
-    
+
         main {
           margin-left: 0;
           width: 100%;
           padding: 10px 10px 20px 10px;
           background: #fff8f0;
         }
-    
+
         .gallery-grid {
-          grid-template-columns: 1fr; /* 1 columna para evitar overflow */
+          grid-template-columns: 1fr;
           gap: 20px;
           padding: 0 10px;
         }
-    
+
         .gallery-item {
-          min-height: auto; /* altura automática para móviles */
+          min-height: auto;
         }
-    
+
         .sidebar {
           width: 100%;
           height: 100%;
@@ -112,23 +115,23 @@
           left: 0;
           z-index: 1000;
         }
-    
+
         .sidebar.active {
           transform: translateX(0);
         }
-    
+
         .sidebar h2 {
           font-size: 1.2em;
           padding: 8px 12px;
           letter-spacing: 0.8px;
         }
-    
+
         main,
         footer {
           margin-left: 0;
           width: 100%;
         }
-    
+
         .menu-toggle {
           display: block;
           position: fixed;
@@ -136,41 +139,63 @@
           left: 10px;
           z-index: 1100;
         }
-    
+
         .sidebar.active + main {
-          pointer-events: none; /* evita clics mientras sidebar abierto */
+          pointer-events: none;
           opacity: 0.3;
         }
-    
+
         section {
           flex-direction: column;
           max-width: 100%;
           padding: 20px;
           margin: 20px 10px;
         }
-    
+
         section img {
           width: 100%;
           height: auto;
           margin-bottom: 20px;
         }
-    
+
         section .text-content {
           min-height: auto;
           justify-content: flex-start;
         }
-    
+
         header {
           padding: 60px 10px;
           background-image: linear-gradient(135deg, #ffcf40, #003087, #ce1126);
         }
-    
+
         header h1 {
           font-size: 2em;
         }
-    
+
         header::before {
           display: none;
+        }
+      }
+
+      .gallery-item:hover img {
+        border-color: #ce1126;
+      }
+
+      .gallery-item audio {
+        display: block;
+        margin: 15px auto;
+        width: 100%;
+        max-width: 300px;
+        border-radius: 8px;
+      }
+
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .gallery-item img {
+          height: 190px;
         }
       }
     </style>
@@ -213,6 +238,10 @@
               kunkapak watanakuna, rinriwatakuna, chukuta rikuna
               alpargatakunammi Kichwa shimikuna ruraykuna kawsayta rikuchin.
             </p>
+            <audio controls>
+              <source src="audios/audio1.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -235,6 +264,10 @@
               Cedazokuna chaymi lluksimanta ruranakunata, rimaykunata, wataykuna
               lluksinakunata chayllatak ruranakunata shamun.
             </p>
+            <audio controls>
+              <source src="audios/audio2.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -258,6 +291,10 @@
               tusukunchik. Kay tusuy riksishka rituallami, shuk killkana
               tusuykunata ruraykunata, llaktamanta ruranakuyta rikuchin.
             </p>
+            <audio controls>
+              <source src="audios/audio3.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -279,6 +316,10 @@
               sumak lluksimanta punchukunawan tullpuk arkunawan shuk killkapi
               tinkunakun, chay killkapi llaktakunapak shinayuk kawsay rikurimun.
             </p>
+            <audio controls>
+              <source src="audios/audio4.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -301,6 +342,10 @@
               shinashina purinkapak, chaypi Kichwakunap llukshimanta kallariy
               rikurimun.
             </p>
+            <audio controls>
+              <source src="audios/audio5.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -324,6 +369,10 @@
               churin, chay raymi juni killapi raykun, inti wataypa
               kallarinamanta yupaychachik.
             </p>
+            <audio controls>
+              <source src="audios/audio6.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -346,6 +395,10 @@
               kawsayta rikuchinankapak. Coplata takikushpa, tusukushpa inti
               wataypa kallarinamanta yupaychachunkuna.
             </p>
+            <audio controls>
+              <source src="audios/audio7.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -369,6 +422,10 @@
               sumak rikurimun. Blusakunaka ñawpak lluksi millkakunawan
               bordadukmi, chaymi kawsaykuna llukshimanta alli rikuchin.
             </p>
+            <audio controls>
+              <source src="audios/audio8.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
           </div>
 
           <div class="gallery-item">
@@ -634,7 +691,7 @@
         Ecuador
       </p>
     </footer>
-    
+
     <script>
       document.addEventListener("DOMContentLoaded", () => {
         const sidebar = document.querySelector(".sidebar");
