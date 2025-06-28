@@ -242,7 +242,7 @@
       background-size: 120px;
       animation: subtleMove 15s linear infinite;
       position: relative;
-      overflow: visible; /* Cambiado para evitar cortes */
+      overflow: visible;
     }
 
     section::before {
@@ -312,17 +312,18 @@
       justify-content: center;
       animation: fadeIn 1s ease-in;
       width: 100%;
-      overflow: visible; /* Asegurar que el texto no se corte */
+      overflow: visible;
     }
 
     section .text-content p {
       color: #333;
       font-size: 1.1em;
-      margin-top: 12px;
+      margin: 12px 0;
       line-height: 1.7;
-      word-wrap: break-word; /* Permitir que el texto se ajuste */
-      white-space: normal; /* Evitar cortes en el texto */
-      max-width: 100%; /* Asegurar que el texto no exceda el contenedor */
+      word-wrap: break-word;
+      white-space: normal;
+      max-width: 100%;
+      padding: 10px;
     }
 
     section h2,
@@ -395,7 +396,7 @@
       font-style: italic;
       border-radius: 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-      overflow: visible; /* Asegurar que el texto no se corte */
+      overflow: visible;
     }
 
     .context h3 {
@@ -425,7 +426,7 @@
       border-radius: 8px;
       background: rgba(255, 207, 64, 0.05);
       transition: background 0.3s ease;
-      overflow: visible; /* Asegurar que el texto no se corte */
+      overflow: visible;
     }
 
     summary {
@@ -461,12 +462,12 @@
       background: linear-gradient(180deg, #fdf6ec, #f5e9d8);
       border-radius: 10px;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
-      overflow: visible; /* Asegurar que el texto no se corte */
+      overflow: visible;
     }
 
     .gallery-section {
       margin-bottom: 50px;
-      padding: 25px;
+      padding: 30px;
       background: linear-gradient(180deg, #fff, #f5e9d8);
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
@@ -475,7 +476,8 @@
       border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30 stretch;
       animation: fadeIn 1s ease-in;
       position: relative;
-      overflow: visible; /* Cambiado para evitar cortes */
+      overflow: visible;
+      width: 100%;
     }
 
     .gallery-section::before {
@@ -496,16 +498,28 @@
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
     }
 
+    .gallery-section > p {
+      color: #333;
+      font-size: 1.1em;
+      margin: 15px 0;
+      line-height: 1.7;
+      word-wrap: break-word;
+      white-space: normal;
+      max-width: 100%;
+      padding: 10px;
+    }
+
     .gallery-item {
       display: flex;
       flex-direction: column;
       background: #fff;
-      padding: 10px;
+      padding: 15px;
       border-radius: 12px;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
       transition: transform 0.4s ease, box-shadow 0.4s ease;
       animation: fadeIn 1s ease-in;
-      overflow: visible; /* Asegurar que el texto no se corte */
+      overflow: visible;
+      width: 100%;
     }
 
     .gallery-item:hover {
@@ -560,28 +574,28 @@
       font-size: 0.9rem;
       color: #444;
       text-align: justify;
-      line-height: 1.4;
-      margin-bottom: 5px;
-      flex-grow: 1;
-      word-wrap: break-word; /* Permitir que el texto se ajuste */
-      white-space: normal; /* Evitar cortes en el texto */
-      max-width: 100%; /* Asegurar que el texto no exceda el contenedor */
+      line-height: 1.6;
+      margin: 10px 0;
+      word-wrap: break-word;
+      white-space: normal;
+      max-width: 100%;
+      padding: 5px;
     }
 
     .gallery-item p:last-of-type {
-      margin-bottom: 5px;
+      margin-bottom: 10px;
     }
 
     .gallery-item hr {
       border: none;
       border-top: 1px solid #ddd;
-      margin: 5px 0;
+      margin: 10px 0;
     }
 
     .gallery-item audio {
       width: 100%;
       max-width: 220px;
-      margin: 5px auto 8px;
+      margin: 10px auto 8px;
       border-radius: 6px;
       display: block;
       margin-top: auto;
@@ -600,7 +614,7 @@
       border-image: url("https://www.transparenttextures.com/patterns/woven.png") 30 stretch;
       animation: fadeIn 1s ease-in;
       position: relative;
-      overflow: visible; /* Cambiado para evitar cortes */
+      overflow: visible;
     }
 
     .glossary::before {
@@ -674,15 +688,16 @@
     .glossary ul {
       list-style: none;
       padding-left: 0;
-      max-width: 100%; /* Asegurar que la lista no exceda el contenedor */
-      overflow: visible; /* Evitar cortes en el texto */
+      max-width: 100%;
+      overflow: visible;
     }
 
     .glossary ul li {
       margin: 12px 0;
       font-size: 1.1em;
-      word-wrap: break-word; /* Permitir que el texto se ajuste */
-      white-space: normal; /* Evitar cortes en el texto */
+      word-wrap: break-word;
+      white-space: normal;
+      max-width: 100%;
     }
 
     .glossary ul li strong {
@@ -816,7 +831,7 @@
         max-width: 100%;
         padding: 20px;
         margin: 20px 15px;
-        overflow: visible; /* Asegurar que el texto no se corte */
+        overflow: visible;
       }
       section img {
         width: auto;
@@ -827,21 +842,22 @@
       section .text-content {
         justify-content: flex-start;
         width: 100%;
-        overflow: visible; /* Asegurar que el texto no se corte */
+        overflow: visible;
       }
       section .text-content p {
-        font-size: 1em; /* Reducir tamaño para mejor ajuste */
-        line-height: 1.5; /* Mejorar legibilidad */
-        margin: 10px 0;
+        font-size: 0.95em;
+        line-height: 1.6;
+        margin: 15px 0;
         word-wrap: break-word;
         white-space: normal;
         max-width: 100%;
+        padding: 10px;
       }
       section h2,
       .gallery-section h2 {
         font-size: 1.6em;
         gap: 6px;
-        padding: 15px 20px; /* Reducir padding para más espacio */
+        padding: 15px 20px;
       }
       section h2::before,
       .gallery-section h2::before {
@@ -856,18 +872,28 @@
       }
       .gallery-grid {
         grid-template-columns: 1fr;
-        gap: 8px;
-        padding: 10px;
-        overflow: visible; /* Asegurar que el texto no se corte */
+        gap: 12px;
+        padding: 15px;
+        overflow: visible;
       }
       .gallery-section {
         margin-bottom: 30px;
-        padding: 15px;
-        overflow: visible; /* Asegurar que el texto no se corte */
+        padding: 20px;
+        overflow: visible;
+        width: 100%;
+      }
+      .gallery-section > p {
+        font-size: 0.95em;
+        line-height: 1.6;
+        margin: 15px 0;
+        word-wrap: break-word;
+        white-space: normal;
+        max-width: 100%;
+        padding: 10px;
       }
       .gallery-section h2 {
         font-size: 1.6em;
-        margin-bottom: 12px;
+        margin-bottom: 15px;
         gap: 6px;
         padding: 15px 20px;
       }
@@ -881,14 +907,15 @@
         animation: expandLine 1.5s ease-out forwards, gradientFlow 6s ease-in-out infinite;
       }
       .gallery-item {
-        padding: 10px;
-        overflow: visible; /* Asegurar que el texto no se corte */
+        padding: 15px;
+        overflow: visible;
+        width: 100%;
       }
       .gallery-item img {
         width: auto;
         max-width: 100%;
         height: auto;
-        margin: 0 auto 8px;
+        margin: 0 auto 15px;
       }
       .gallery-item h3 {
         margin: 5px 0;
@@ -897,25 +924,26 @@
         animation: expandLine 1.5s ease-out forwards, gradientFlow 6s ease-in-out infinite;
       }
       .gallery-item p {
-        font-size: 0.85rem; /* Reducir tamaño para mejor ajuste */
-        line-height: 1.5; /* Mejorar legibilidad */
-        margin: 5px 0;
+        font-size: 0.85rem;
+        line-height: 1.6;
+        margin: 10px 0;
         word-wrap: break-word;
         white-space: normal;
         max-width: 100%;
+        padding: 5px;
       }
       .gallery-item p:last-of-type {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
       .gallery-item hr {
-        margin: 5px 0;
+        margin: 10px 0;
       }
       .gallery-item audio {
-        margin: 5px auto 8px;
+        margin: 10px auto 8px;
         margin-top: auto;
       }
       .glossary {
-        overflow: visible; /* Asegurar que el texto no se corte */
+        overflow: visible;
       }
       .glossary h2 {
         font-size: 1.6em;
@@ -928,8 +956,8 @@
         opacity: 0.6;
       }
       .glossary ul li {
-        font-size: 1em; /* Reducir tamaño para mejor ajuste */
-        line-height: 1.5;
+        font-size: 1em;
+        line-height: 1.6;
         margin: 10px 0;
         word-wrap: break-word;
         white-space: normal;
@@ -940,14 +968,24 @@
     @media (min-width: 769px) and (max-width: 1024px) {
       .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        gap: 12px;
         padding: 15px;
-        overflow: visible; /* Asegurar que el texto no se corte */
+        overflow: visible;
       }
       .gallery-section {
         margin-bottom: 40px;
         padding: 20px;
-        overflow: visible; /* Asegurar que el texto no se corte */
+        overflow: visible;
+        width: 100%;
+      }
+      .gallery-section > p {
+        font-size: 1em;
+        line-height: 1.6;
+        margin: 15px 0;
+        word-wrap: break-word;
+        white-space: normal;
+        max-width: 100%;
+        padding: 10px;
       }
       .gallery-section h2 {
         font-size: 1.8em;
@@ -964,14 +1002,15 @@
         animation: expandLine 1.5s ease-out forwards, gradientFlow 6s ease-in-out infinite;
       }
       .gallery-item {
-        padding: 10px;
-        overflow: visible; /* Asegurar que el texto no se corte */
+        padding: 15px;
+        overflow: visible;
+        width: 100%;
       }
       .gallery-item img {
         width: auto;
         max-width: 100%;
         height: 120px;
-        margin: 0 auto 10px;
+        margin: 0 auto 15px;
       }
       .gallery-item h3 {
         margin: 5px 0;
@@ -980,20 +1019,22 @@
         animation: expandLine 1.5s ease-out forwards, gradientFlow 6s ease-in-out infinite;
       }
       .gallery-item p {
-        line-height: 1.4;
-        margin-bottom: 5px;
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin: 10px 0;
         word-wrap: break-word;
         white-space: normal;
         max-width: 100%;
+        padding: 5px;
       }
       .gallery-item p:last-of-type {
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
       .gallery-item hr {
-        margin: 5px 0;
+        margin: 10px 0;
       }
       .gallery-item audio {
-        margin: 5px auto 8px;
+        margin: 10px auto 8px;
         margin-top: auto;
       }
     }
