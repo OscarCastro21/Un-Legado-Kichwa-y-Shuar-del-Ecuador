@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Un Legado Kichwa y Shuar del Ecuador</title>
+    <link rel="icon" href="imagenes/Ecuador.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Roboto:wght@400;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="sidebar">
+        <h2>Un Legado Kichwa y Shuar del Ecuador</h2>
+        <ul>
+          <li><a href="index.html" class="active">Inicio</a></li>
+          <li>
+            <a href="kichwa.html" class="sidebar-menu-toggle">Kichwa</a>
+            <ul class="submenu">
+              <li><a href="kichwa_canari.html">Kichwa Cañari</a></li>
+              <li><a href="kichwa_otavalo.html">Kichwa Otavalo</a></li>
+              <li><a href="kichwa_cayambe.html">Kichwa Cayambe</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="shuar.html" class="sidebar-menu-toggle">Shuar</a>
+            <ul class="submenu">
+              <li><a href="shuar_amazonia.html">Shuar</a></li>
+            </ul>
+          </li>
+          <li><a href="conocenos.html">Conócenos</a></li>
+        </ul>
+      </nav>
+      <main>
+        <header>
+          <h1>Un Legado Kichwa y Shuar del Ecuador</h1>
+        </header>
+        <section class="content-section">
+          <div class="image-container">
+            <img
+              src="imagenes/Kichwa.jpg"
+              alt="Cultura Kichwa"
+              class="section-image"
+            />
+          </div>
+          <div class="text-content">
+            <h2 class="section-title">🌄 <span>Kichwa</span></h2>
+            <p class="section-text">
+              Los Kichwa constituyen una nacionalidad indígena predominantemente
+              asentada en la Sierra ecuatoriana. Esta nacionalidad ha
+              experimentado un notable avance y desarrollo cultural, evidenciado
+              en sus costumbres, tradiciones, filosofía, cosmovisión y su
+              impacto en la región.
+            </p>
+          </div>
+        </section>
+        <section class="content-section">
+          <div class="image-container">
+            <img
+              src="imagenes/shuar mujer vestimenta.jpg"
+              alt="Cultura Shuar"
+              class="section-image"
+            />
+          </div>
+          <div class="text-content">
+            <h2 class="section-title">🌿 <span>Shuar</span></h2>
+            <p class="section-text">
+              Los Shuar son una de las nacionalidades indígenas del Ecuador,
+              asentados en una extensa área de la Amazonía ecuatoriana. Sus
+              costumbres ancestrales giran en torno a la cosecha de la yuca y la
+              labor conjunta de hombres y mujeres en el campo. Tradicionalmente
+              considerados una cultura guerrera, han preservado diversas
+              costumbres y tradiciones propias.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <p>
+        © 2025 Un Legado Kichwa y Shuar | Inspirado en la riqueza cultural del
+        Ecuador
+      </p>
+    </footer>
+    <div class="menu-toggle">☰</div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.querySelector(".sidebar");
+        const toggle = document.querySelector(".menu-toggle");
+
+        if (!sidebar || !toggle) {
+          console.error("Error: No se encontró .sidebar o .menu-toggle");
+          return;
+        }
+
+        toggle.addEventListener("click", () => {
+          const isExpanded = sidebar.classList.toggle("active");
+          toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+          toggle.classList.toggle("hidden", isExpanded); // Oculta/muestra el menu-toggle
+          sidebar.style.overflowY = isExpanded ? "auto" : "hidden";
+          sidebar.style.maxHeight = isExpanded ? "100vh" : "100%";
+        });
+
+        const menuToggles = document.querySelectorAll(".sidebar-menu-toggle");
+        const submenus = document.querySelectorAll(".submenu");
+
+        menuToggles.forEach((toggle, index) => {
+          toggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            const submenu = submenus[index];
+            const isOpen = submenu.classList.toggle("open");
+
+            submenus.forEach((s, i) => {
+              if (i !== index) s.classList.remove("open");
+            });
+
+            sidebar.style.maxHeight = isOpen ? "auto" : "100vh";
+            sidebar.style.overflowY = "auto";
+
+            if (
+              isOpen &&
+              window.location.pathname !== toggle.getAttribute("href")
+            ) {
+              setTimeout(() => {
+                window.location.href = toggle.href;
+              }, 300);
+            }
+          });
+        });
+
+        const currentPage = window.location.pathname;
+        menuToggles.forEach((toggle, index) => {
+          if (
+            currentPage.includes(
+              toggle.getAttribute("href").replace(".html", "")
+            )
+          ) {
+            submenus[index].classList.add("open");
+            sidebar.style.maxHeight = "auto";
+            sidebar.style.overflowY = "auto";
+          }
+        });
+
+        const submenuLinks = document.querySelectorAll(".submenu a");
+        submenuLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+              sidebar.classList.remove("active");
+              toggle.setAttribute("aria-expanded", "false");
+              toggle.classList.remove("hidden"); // Muestra el menu-toggle
+              submenus.forEach((submenu) => submenu.classList.remove("open"));
+              sidebar.style.maxHeight = "100%";
+              sidebar.style.overflowY = "hidden";
+            }
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (
+            window.innerWidth <= 768 &&
+            !sidebar.contains(event.target) &&
+            !toggle.contains(event.target)
+          ) {
+            sidebar.classList.remove("active");
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.classList.remove("hidden"); // Muestra el menu-toggle
+            submenus.forEach((submenu) => submenu.classList.remove("open"));
+            sidebar.style.maxHeight = "100%";
+            sidebar.style.overflowY = "hidden";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

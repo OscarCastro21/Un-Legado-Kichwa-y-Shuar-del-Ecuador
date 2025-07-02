@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kichwa - Un Legado</title>
+    <link rel="icon" href="imagenes/Ecuador.png" type="image/png" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Roboto:wght@400;700&family=Open+Sans&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="sidebar">
+        <h2>Un Legado Kichwa y Shuar del Ecuador</h2>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li>
+            <a href="kichwa.html" class="sidebar-menu-toggle active">Kichwa</a>
+            <ul class="submenu">
+              <li><a href="kichwa_canari.html">Kichwa Cañari</a></li>
+              <li><a href="kichwa_otavalo.html">Kichwa Otavalo</a></li>
+              <li><a href="kichwa_cayambe.html">Kichwa Cayambe</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="shuar.html" class="sidebar-menu-toggle">Shuar</a>
+            <ul class="submenu">
+              <li><a href="shuar_amazonia.html">Shuar</a></li>
+            </ul>
+          </li>
+          <li><a href="conocenos.html">Conócenos</a></li>
+        </ul>
+      </nav>
+      <main>
+        <header>
+          <h1>Kichwa del Ecuador</h1>
+        </header>
+        <section class="content-section">
+          <div class="image-container">
+            <img
+              src="imagenes/Kichwa baile.jpg"
+              alt="Baile de Bienvenida Kichwa"
+              class="section-image"
+            />
+          </div>
+          <div class="text-content">
+            <h2 class="section-title">🌄 <span>Baile de Bienvenida</span></h2>
+            <p class="section-text">
+              El baile de bienvenida kichwa es una danza tradicional que se
+              realiza para recibir a invitados y visitantes con respeto y
+              alegría. Generalmente, se acompaña con música de instrumentos
+              típicos como la flauta y el bombo, y los bailarines visten trajes
+              coloridos con elementos que representan la naturaleza y la cultura
+              andina amazónica. Este baile simboliza la hospitalidad, la unión y
+              la armonía con el entorno.
+            </p>
+          </div>
+        </section>
+        <section class="content-section">
+          <div class="image-container">
+            <img
+              src="imagenes/kichwa mujer vestimenta.jpg"
+              alt="Vestimenta Tradicional Mujeres Kichwa"
+              class="section-image"
+            />
+          </div>
+          <div class="text-content">
+            <h2 class="section-title">
+              🌄 <span>Vestimenta Tradicional Mujeres</span>
+            </h2>
+            <p class="section-text">
+              Refleja su identidad cultural y conexión con la naturaleza. Suele
+              incluir faldas o enaguas hechas de telas coloridas, blusas
+              bordadas, y adornos con cuentas, plumas y semillas. Además,
+              complementan su atuendo con collares y cintas que simbolizan su
+              pertenencia a la comunidad y su rol dentro de ella. Esta
+              vestimenta es funcional para el clima tropical y es un símbolo de
+              respeto a sus tradiciones ancestrales.
+            </p>
+          </div>
+        </section>
+        <section class="content-section">
+          <div class="image-container">
+            <img
+              src="imagenes/baile san juanito.jpg"
+              alt="Baile Tradicional San Juanito"
+              class="section-image"
+            />
+          </div>
+          <div class="text-content">
+            <h2 class="section-title">
+              🌄 <span>Baile Tradicional San Juanito</span>
+            </h2>
+            <p class="section-text">
+              El Sanjuanito es un baile tradicional andino, muy popular en
+              Ecuador, que se caracteriza por su ritmo alegre y movimientos
+              dinámicos. Se baila en pareja durante festividades y
+              celebraciones, especialmente en honor a San Juan, patrono de
+              varias comunidades. Representa la alegría, la unidad y la
+              identidad cultural de los pueblos indígenas y mestizos de la
+              región andina.
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <p>
+        © 2025 Un Legado Kichwa y Shuar | Inspirado en la riqueza cultural del
+        Ecuador
+      </p>
+    </footer>
+    <div class="menu-toggle">☰</div>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.querySelector(".sidebar");
+        const toggle = document.querySelector(".menu-toggle");
+
+        if (!sidebar || !toggle) {
+          console.error("Error: No se encontró .sidebar o .menu-toggle");
+          return;
+        }
+
+        toggle.addEventListener("click", () => {
+          const isExpanded = sidebar.classList.toggle("active");
+          toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+          toggle.classList.toggle("hidden", isExpanded); // Oculta/muestra el menu-toggle
+          sidebar.style.overflowY = isExpanded ? "auto" : "hidden";
+          sidebar.style.maxHeight = isExpanded ? "100vh" : "100%";
+        });
+
+        const menuToggles = document.querySelectorAll(".sidebar-menu-toggle");
+        const submenus = document.querySelectorAll(".submenu");
+
+        menuToggles.forEach((toggle, index) => {
+          toggle.addEventListener("click", (e) => {
+            e.preventDefault();
+            const submenu = submenus[index];
+            const isOpen = submenu.classList.toggle("open");
+
+            submenus.forEach((s, i) => {
+              if (i !== index) s.classList.remove("open");
+            });
+
+            sidebar.style.maxHeight = isOpen ? "auto" : "100vh";
+            sidebar.style.overflowY = "auto";
+
+            if (
+              isOpen &&
+              window.location.pathname !== toggle.getAttribute("href")
+            ) {
+              setTimeout(() => {
+                window.location.href = toggle.href;
+              }, 300);
+            }
+          });
+        });
+
+        const currentPage = window.location.pathname;
+        menuToggles.forEach((toggle, index) => {
+          if (
+            currentPage.includes(
+              toggle.getAttribute("href").replace(".html", "")
+            )
+          ) {
+            submenus[index].classList.add("open");
+            sidebar.style.maxHeight = "auto";
+            sidebar.style.overflowY = "auto";
+          }
+        });
+
+        const submenuLinks = document.querySelectorAll(".submenu a");
+        submenuLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+              sidebar.classList.remove("active");
+              toggle.setAttribute("aria-expanded", "false");
+              toggle.classList.remove("hidden"); // Muestra el menu-toggle
+              submenus.forEach((submenu) => submenu.classList.remove("open"));
+              sidebar.style.maxHeight = "100%";
+              sidebar.style.overflowY = "hidden";
+            }
+          });
+        });
+
+        document.addEventListener("click", (event) => {
+          if (
+            window.innerWidth <= 768 &&
+            !sidebar.contains(event.target) &&
+            !toggle.contains(event.target)
+          ) {
+            sidebar.classList.remove("active");
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.classList.remove("hidden"); // Muestra el menu-toggle
+            submenus.forEach((submenu) => submenu.classList.remove("open"));
+            sidebar.style.maxHeight = "100%";
+            sidebar.style.overflowY = "hidden";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
