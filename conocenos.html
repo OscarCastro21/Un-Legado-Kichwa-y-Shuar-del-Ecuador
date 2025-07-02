@@ -31,9 +31,10 @@
               <li><a href="shuar_amazonia.html">Shuar Amazonía</a></li>
             </ul>
           </li>
-          <li><a href="cono-conocenos.html" class="active">Conócenos</a></li>
+          <li><a href="conocenos.html" class="active">Conócenos</a></li>
         </ul>
       </nav>
+      <div class="sidebar-backdrop"></div>
       <main>
         <header>
           <h1>Conócenos</h1>
@@ -51,7 +52,7 @@
     <footer>
       <p>
         © 2025 Un Legado Kichwa y Shuar | Inspirado en la riqueza cultural del
-        Ecuador
+        Ecuador | 03:02 PM -05, 02 de julio de 2025
       </p>
     </footer>
     <div class="menu-toggle">☰</div>
@@ -59,6 +60,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         const sidebar = document.querySelector(".sidebar");
         const toggle = document.querySelector(".menu-toggle");
+        const backdrop = document.querySelector(".sidebar-backdrop");
 
         if (!sidebar || !toggle) {
           console.error("Error: No se encontró .sidebar o .menu-toggle");
@@ -68,9 +70,12 @@
         toggle.addEventListener("click", () => {
           const isExpanded = sidebar.classList.toggle("active");
           toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
-          toggle.classList.toggle("hidden", isExpanded); // Oculta/muestra el menu-toggle
+          toggle.classList.toggle("hidden", isExpanded);
           sidebar.style.overflowY = isExpanded ? "auto" : "hidden";
           sidebar.style.maxHeight = isExpanded ? "100vh" : "100%";
+          if (backdrop) {
+            backdrop.classList.toggle("active", isExpanded);
+          }
         });
 
         const menuToggles = document.querySelectorAll(".sidebar-menu-toggle");
@@ -119,10 +124,13 @@
             if (window.innerWidth <= 768) {
               sidebar.classList.remove("active");
               toggle.setAttribute("aria-expanded", "false");
-              toggle.classList.remove("hidden"); // Muestra el menu-toggle
+              toggle.classList.remove("hidden");
               submenus.forEach((submenu) => submenu.classList.remove("open"));
               sidebar.style.maxHeight = "100%";
               sidebar.style.overflowY = "hidden";
+              if (backdrop) {
+                backdrop.classList.remove("active");
+              }
             }
           });
         });
@@ -135,68 +143,16 @@
           ) {
             sidebar.classList.remove("active");
             toggle.setAttribute("aria-expanded", "false");
-            toggle.classList.remove("hidden"); // Muestra el menu-toggle
+            toggle.classList.remove("hidden");
             submenus.forEach((submenu) => submenu.classList.remove("open"));
             sidebar.style.maxHeight = "100%";
             sidebar.style.overflowY = "hidden";
+            if (backdrop) {
+              backdrop.classList.remove("active");
+            }
           }
         });
       });
     </script>
-    <style>
-      .video-container {
-        display: flex;
-        justify-content: center;
-        padding: 20px;
-        max-width: 1000px;
-        margin: 0 auto;
-      }
-
-      .section-video {
-        width: 100%;
-        max-width: 1000px;
-        height: 70vh; /* Altura significativa para que no se vea pequeño */
-        object-fit: cover; /* Asegura que el video cubra el área sin distorsionarse */
-        border-radius: 12px;
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-        transition: transform 0.4s ease, box-shadow 0.4s ease;
-        background: #000; /* Fondo negro para evitar espacios vacíos */
-      }
-
-      .section-video:hover {
-        transform: scale(1.02);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-      }
-
-      .content-section {
-        min-height: 0;
-        height: auto;
-        padding: 0 30px 30px;
-        margin: 30px auto;
-        max-width: 1000px;
-      }
-
-      @media (max-width: 1024px) {
-        .section-video {
-          height: 60vh; /* Ajusta la altura en pantallas medianas */
-        }
-      }
-
-      @media (max-width: 768px) {
-        .section-video {
-          height: 50vh; /* Ajusta la altura en pantallas pequeñas */
-          max-width: 100%;
-        }
-        .video-container {
-          padding: 10px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        .section-video {
-          height: 40vh; /* Ajusta la altura en pantallas muy pequeñas */
-        }
-      }
-    </style>
   </body>
 </html>
