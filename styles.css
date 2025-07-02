@@ -50,13 +50,13 @@ header h1 {
 /* Barra lateral */
 .sidebar {
   width: 250px;
-  background: linear-gradient(180deg, #4a2c2a, #2e1f0f); /* Marrón Shuar */
+  background: #4a2c2a; /* Fondo sólido para opacidad total */
+  background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
+  background-size: 200px;
   color: #fdefef;
   position: fixed;
   height: 100%;
   box-shadow: 3px 0 12px rgba(0, 0, 0, 0.3);
-  background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
-  background-size: 200px;
   padding-top: 25px;
   transition: transform 0.4s ease;
   z-index: 1000;
@@ -68,9 +68,6 @@ header h1 {
 .sidebar.active {
   transform: translateX(0);
   opacity: 1;
-  background: #4a2c2a; /* Fondo sólido para opacidad total */
-  background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
-  background-size: 200px;
 }
 
 /* Fondo de superposición para móviles */
@@ -182,7 +179,6 @@ footer {
   background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
   background-size: 200px;
   z-index: 500;
-  position: relative;
 }
 
 footer p {
@@ -412,9 +408,6 @@ footer p {
   footer {
     margin-left: 0;
     width: 100%;
-    position: fixed;
-    bottom: 0;
-    left: 0;
   }
   .menu-toggle {
     display: block;
