@@ -169,13 +169,13 @@ header h1 {
 
 /* Footer */
 footer {
-  background: linear-gradient(180deg, #4a2c2a, #2e1f0f);
+  background: linear-gradient(180deg, #3c2f2f, #2e1f0f);
   color: #fdefef;
   text-align: center;
   padding: 25px;
   width: 100%;
   border-top: 4px solid transparent;
-  border-image: linear-gradient(45deg, #e6b800, #a1122c) 1;
+  border-image: linear-gradient(45deg, #d4a017, #8b1e2d) 1;
   background-image: url("https://www.transparenttextures.com/patterns/dark-wood.png");
   background-size: 200px;
   z-index: 500;
