@@ -117,6 +117,11 @@ header h1 {
   }
 }
 
+.sidebar ul li .sidebar-menu-toggle {
+  font-weight: 700;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+}
+
 .sidebar ul {
   list-style: none;
   padding-left: 0;
@@ -131,7 +136,8 @@ header h1 {
   display: block;
   padding: 12px 20px;
   border-left: 5px solid transparent;
-  border-image: linear-gradient(45deg, #e6b800, #2b3a67) 1;
+  border-image: url("https://www.transparenttextures.com/patterns/diagonal-striped-brick.png")
+    30 stretch;
   transition: all 0.4s ease;
   border-radius: 8px;
   background-color: rgba(74, 44, 42, 0.7); /* Fondo más opaco */
