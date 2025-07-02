@@ -118,6 +118,7 @@
       document.addEventListener("DOMContentLoaded", () => {
         const sidebar = document.querySelector(".sidebar");
         const toggle = document.querySelector(".menu-toggle");
+        const backdrop = document.querySelector(".sidebar-backdrop");
 
         if (!sidebar || !toggle) {
           console.error("Error: No se encontró .sidebar o .menu-toggle");
@@ -127,9 +128,12 @@
         toggle.addEventListener("click", () => {
           const isExpanded = sidebar.classList.toggle("active");
           toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
-          toggle.classList.toggle("hidden", isExpanded); // Oculta/muestra el menu-toggle
+          toggle.classList.toggle("hidden", isExpanded);
           sidebar.style.overflowY = isExpanded ? "auto" : "hidden";
           sidebar.style.maxHeight = isExpanded ? "100vh" : "100%";
+          if (backdrop) {
+            backdrop.classList.toggle("active", isExpanded);
+          }
         });
 
         const menuToggles = document.querySelectorAll(".sidebar-menu-toggle");
@@ -178,10 +182,13 @@
             if (window.innerWidth <= 768) {
               sidebar.classList.remove("active");
               toggle.setAttribute("aria-expanded", "false");
-              toggle.classList.remove("hidden"); // Muestra el menu-toggle
+              toggle.classList.remove("hidden");
               submenus.forEach((submenu) => submenu.classList.remove("open"));
               sidebar.style.maxHeight = "100%";
               sidebar.style.overflowY = "hidden";
+              if (backdrop) {
+                backdrop.classList.remove("active");
+              }
             }
           });
         });
@@ -194,10 +201,13 @@
           ) {
             sidebar.classList.remove("active");
             toggle.setAttribute("aria-expanded", "false");
-            toggle.classList.remove("hidden"); // Muestra el menu-toggle
+            toggle.classList.remove("hidden");
             submenus.forEach((submenu) => submenu.classList.remove("open"));
             sidebar.style.maxHeight = "100%";
             sidebar.style.overflowY = "hidden";
+            if (backdrop) {
+              backdrop.classList.remove("active");
+            }
           }
         });
       });
