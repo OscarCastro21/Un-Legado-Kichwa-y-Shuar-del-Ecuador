@@ -189,89 +189,77 @@
     <div class="menu-toggle">☰</div>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        const sidebar = document.querySelector(".sidebar");
-        const toggle = document.querySelector(".menu-toggle");
-        const backdrop = document.querySelector(".sidebar-backdrop");
-
-        if (!sidebar || !toggle) {
-          console.error("Error: No se encontró .sidebar o .menu-toggle");
-          return;
+      const sidebar = document.querySelector(".sidebar");
+      const toggle = document.querySelector(".menu-toggle");
+      const backdrop = document.querySelector(".sidebar-backdrop");
+    
+      if (!sidebar || !toggle) {
+        console.error("Error: No se encontró .sidebar o .menu-toggle");
+        return;
+      }
+    
+      toggle.addEventListener("click", () => {
+        const isExpanded = sidebar.classList.toggle("active");
+        toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+        toggle.classList.toggle("hidden", isExpanded);
+        sidebar.style.overflowY = isExpanded ? "auto" : "hidden";
+        sidebar.style.maxHeight = isExpanded ? "100vh" : "100%";
+        if (backdrop) {
+          backdrop.classList.toggle("active", isExpanded);
         }
-
-        toggle.addEventListener("click", () => {
-          const isExpanded = sidebar.classList.toggle("active");
-          toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
-          toggle.classList.toggle("hidden", isExpanded);
-          sidebar.style.overflowY = isExpanded ? "auto" : "hidden";
-          sidebar.style.maxHeight = isExpanded ? "100vh" : "100%";
+      });
+    
+      const menuToggles = document.querySelectorAll(".sidebar-menu-toggle");
+      const submenus = document.querySelectorAll(".submenu");
+    
+      menuToggles.forEach((toggle, index) => {
+        toggle.addEventListener("click", (e) => {
+          e.preventDefault();
+          const submenu = submenus[index];
+          const isOpen = submenu.classList.toggle("open");
+    
+          submenus.forEach((s, i) => {
+            if (i !== index) s.classList.remove("open");
+          });
+    
+          sidebar.style.maxHeight = isOpen ? "auto" : "100vh";
+          sidebar.style.overflowY = "auto";
+    
+          if (isOpen && window.location.pathname !== toggle.getAttribute("href")) {
+            setTimeout(() => {
+              window.location.href = toggle.href;
+            }, 300);
+          }
+        });
+      });
+    
+      document.addEventListener("click", (event) => {
+        if (window.innerWidth <= 768 && !sidebar.contains(event.target) && !toggle.contains(event.target)) {
+          sidebar.classList.remove("active");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.classList.remove("hidden");
+          submenus.forEach((submenu) => submenu.classList.remove("open"));
+          sidebar.style.maxHeight = "100%";
+          sidebar.style.overflowY = "hidden";
           if (backdrop) {
-            backdrop.classList.toggle("active", isExpanded);
+            backdrop.classList.remove("active");
           }
-        });
-
-        const menuToggles = document.querySelectorAll(".sidebar-menu-toggle");
-        const submenus = document.querySelectorAll(".submenu");
-
-        menuToggles.forEach((toggle, index) => {
-          toggle.addEventListener("click", (e) => {
-            e.preventDefault();
-            const submenu = submenus[index];
-            const isOpen = submenu.classList.toggle("open");
-
-            submenus.forEach((s, i) => {
-              if (i !== index) s.classList.remove("open");
-            });
-
-            sidebar.style.maxHeight = isOpen ? "auto" : "100vh";
-            sidebar.style.overflowY = "auto";
-
-            if (
-              isOpen &&
-              window.location.pathname !== toggle.getAttribute("href")
-            ) {
-              setTimeout(() => {
-                window.location.href = toggle.href;
-              }, 300);
-            }
-          });
-        });
-
-        const currentPage = window.location.pathname;
-        menuToggles.forEach((toggle, index) => {
-          if (
-            currentPage.includes(
-              toggle.getAttribute("href").replace(".html", "")
-            )
-          ) {
-            submenus[index].classList.add("open");
-            sidebar.style.maxHeight = "auto";
-            sidebar.style.overflowY = "auto";
-          }
-        });
-
-        const submenuLinks = document.querySelectorAll(".submenu a");
-        submenuLinks.forEach((link) => {
-          link.addEventListener("click", () => {
-            if (window.innerWidth <= 768) {
-              sidebar.classList.remove("active");
-              toggle.setAttribute("aria-expanded", "false");
-              toggle.classList.remove("hidden");
-              submenus.forEach((submenu) => submenu.classList.remove("open"));
-              sidebar.style.maxHeight = "100%";
-              sidebar.style.overflowY = "hidden";
-              if (backdrop) {
-                backdrop.classList.remove("active");
-              }
-            }
-          });
-        });
-
-        document.addEventListener("click", (event) => {
-          if (
-            window.innerWidth <= 768 &&
-            !sidebar.contains(event.target) &&
-            !toggle.contains(event.target)
-          ) {
+        }
+      });
+    
+      const currentPage = window.location.pathname;
+      menuToggles.forEach((toggle, index) => {
+        if (currentPage.includes(toggle.getAttribute("href").replace(".html", ""))) {
+          submenus[index].classList.add("open");
+          sidebar.style.maxHeight = "auto";
+          sidebar.style.overflowY = "auto";
+        }
+      });
+    
+      const submenuLinks = document.querySelectorAll(".submenu a");
+      submenuLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 768) {
             sidebar.classList.remove("active");
             toggle.setAttribute("aria-expanded", "false");
             toggle.classList.remove("hidden");
@@ -284,6 +272,7 @@
           }
         });
       });
+    });
     </script>
     <style>
       .gallery-container {
