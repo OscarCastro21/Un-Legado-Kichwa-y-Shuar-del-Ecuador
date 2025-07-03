@@ -266,7 +266,7 @@
         gap: 20px;
         justify-content: center;
         padding: 20px;
-        min-height: 0; /* Evita altura mínima innecesaria */
+        min-height: 0;
       }
 
       .gallery-item {
@@ -276,16 +276,17 @@
           30 stretch;
         border-radius: 12px;
         overflow: hidden;
-        width: 23%; /* 4 tarjetas por fila en pantallas grandes */
+        width: calc(50% - 10px);
         text-align: center;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         transition: transform 0.4s ease, box-shadow 0.4s ease;
         background-image: url("https://www.transparenttextures.com/patterns/asanoha.png");
         background-size: 120px;
         padding: 6px;
-        height: auto; /* Altura dinámica según contenido */
+        height: auto;
         display: flex;
         flex-direction: column;
+        justify-content: space-between; 
       }
 
       .gallery-item:hover {
@@ -326,8 +327,10 @@
         background: rgba(255, 255, 255, 0.85);
         border-radius: 6px;
         margin: 5px 0;
-        flex-grow: 0; /* Elimina crecimiento innecesario */
-        flex-shrink: 1; /* Permite que se ajuste al contenido */
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .gallery-item audio {
@@ -336,24 +339,18 @@
       }
 
       .gallery-item > *:last-child {
-        margin-bottom: 0; /* Elimina margen inferior del último elemento */
-      }
-
-      @media (max-width: 1024px) {
-        .gallery-item {
-          width: 30%; /* 3 tarjetas por fila en tablets */
-        }
+        margin-bottom: 0;
       }
 
       @media (max-width: 768px) {
         .gallery-item {
-          width: 45%; /* 2 tarjetas por fila en móviles medianos */
+          width: 100%;
         }
       }
 
       @media (max-width: 480px) {
         .gallery-item {
-          width: 100%; /* 1 tarjeta por fila en móviles pequeños */
+          width: 100%;
         }
       }
 
