@@ -332,7 +332,7 @@
           30 stretch;
         border-radius: 12px;
         overflow: hidden;
-        width: calc(100% - 10px); /* Dos items por fila */
+        width: calc(100% - 10px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         transition: transform 0.4s ease, box-shadow 0.4s ease;
         background-image: url("https://www.transparenttextures.com/patterns/asanoha.png");
@@ -341,8 +341,8 @@
         display: flex;
         flex-direction: row;
         gap: 15px;
-        align-items: center; /* Center items vertically */
-        min-height: 400px; /* Maintain minimum height for uniformity */
+        align-items: center;
+        min-height: 400px;
       }
 
       .gallery-item:hover {
@@ -355,7 +355,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center; /* Center content vertically within media-column */
+        justify-content: center; 
         gap: 10px;
       }
 
@@ -386,7 +386,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        justify-content: center; /* Center text vertically */
+        justify-content: center; 
         padding: 10px;
       }
 
@@ -412,17 +412,17 @@
 
       @media (max-width: 768px) {
         .gallery-item {
-          width: 100%; /* Apila verticalmente en pantallas pequeñas */
-          flex-direction: column; /* Cambia a columna en móviles */
-          align-items: center; /* Center items in column layout */
-          min-height: 600px; /* Ajuste para móviles */
+          width: 100%;
+          flex-direction: column;
+          align-items: center;
+          min-height: 600px;
         }
 
         .media-column,
         .text-column {
           width: 100%;
           align-items: center;
-          justify-content: center; /* Ensure centering in mobile */
+          justify-content: center; 
         }
 
         .gallery-item img,
