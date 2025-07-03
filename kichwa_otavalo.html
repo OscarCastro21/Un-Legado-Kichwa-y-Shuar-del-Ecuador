@@ -305,7 +305,7 @@
           30 stretch;
         border-radius: 12px;
         overflow: hidden;
-        width: 23%;
+        width: calc(50% - 10px); /* Dos items por fila */
         text-align: center;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
         transition: transform 0.4s ease, box-shadow 0.4s ease;
@@ -315,6 +315,7 @@
         height: auto;
         display: flex;
         flex-direction: column;
+        justify-content: space-between; /* Distribuye el espacio entre elementos */
       }
 
       .gallery-item:hover {
@@ -355,8 +356,10 @@
         background: rgba(255, 255, 255, 0.85);
         border-radius: 6px;
         margin: 5px 0;
-        flex-grow: 0;
-        flex-shrink: 1;
+        flex-grow: 1; /* Permite que el párrafo ocupe el espacio restante */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
       }
 
       .gallery-item audio {
@@ -368,15 +371,9 @@
         margin-bottom: 0;
       }
 
-      @media (max-width: 1024px) {
-        .gallery-item {
-          width: 30%;
-        }
-      }
-
       @media (max-width: 768px) {
         .gallery-item {
-          width: 45%;
+          width: 100%; /* Apila verticalmente en pantallas pequeñas */
         }
       }
 
