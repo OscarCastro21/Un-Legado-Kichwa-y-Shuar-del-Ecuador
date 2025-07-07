@@ -12,21 +12,46 @@
     />
   </head>
     <style>
-        .text-content {
-        max-width: 1000px;
-        margin: 20px auto; 
+      .conocenos-section {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .text-content {
+        max-width: 1000px; 
+        margin: 20px auto;
         padding: 20px;
-        background: rgba(230, 213, 184, 0.95); 
+        background: rgba(230, 213, 184, 0.95);
         border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); 
-        animation: slideIn 0.8s ease-out;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        animation: slideIn 0.8s ease-out; 
         border: 2px solid transparent;
         border-image: linear-gradient(45deg, #d4a017, #8b1e2d) 1;
       }
       
+      .text-content .section-text {
+        text-align: justify; 
+      }
+      
       @media (max-width: 768px) {
         .text-content {
-          padding: 10px; 
+          padding: 10px;
+        }
+        .text-content .section-title {
+          font-size: 1.5em; 
+        }
+        .text-content .section-text {
+          font-size: 0.95em;
+          padding: 10px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .text-content .section-title {
+          font-size: 1.3em; 
+        }
+        .text-content .section-text {
+          font-size: 0.9em; 
         }
       }
     </style>
@@ -62,7 +87,7 @@
         <header>
           <h1>Conócenos</h1>
         </header>
-          <section class="content-section">
+          <section class="content-section conocenos-section">
             <div class="video-container">
               <video controls class="section-video">
                 <source src="videos/conocenos.mp4" type="video/mp4" />
@@ -75,7 +100,7 @@
                 Napaykuna, ñukanchik "Ecuadorpi Kichwa-Shuar Ñawpak Ruray" ñawpak panka-man rimaykuna, ñawpak runakunapa sumak kawsayta yachachishpa rimarinakuykuna.
               </p>
               <p class="section-text">
-                Kay rurayta rurarka Oscar Castro shinallatak Jonathan Guallpa, iskay yachachik runakuna kikinkuna rimarishpa ñawpak runakunapa shimikunata rikuchikpak, kikinkunapa sumak kawsayta yachachiyta munankapakmi.
+                Kay rurayta rurarka Oscar Castro shinallatak Jonathan Guallpa, iskay yachachik runakuna kikinkuna rimarishpa �ñawpak runakunapa shimikunata rikuchikpak, kikinkunapa sumak kawsayta yachachiyta munankapakmi.
               </p>
               <p class="section-text">
                 Kay panka-pi kikinkunata tradiciones, pacha unay kachaykuna, tusukuna, shinallatak kawsa yuyaykuna rikurinqa, ñukanchik llakta shuklla runa kawsayta rikuchik shimikunamanta.
